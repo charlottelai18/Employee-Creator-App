@@ -1,0 +1,10 @@
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/ApiApplication.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/config/CorsConfig.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/controller/EmployeeController.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/dto/EmployeeDto.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/exception/DuplicateEmailException.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/exception/EmployeeNotFoundException.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/exception/GlobalExceptionHandler.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/model/Employee.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/repository/EmployeeRepository.java
+/Users/charlottelai/Desktop/Employee Creator App/Employee-Creator-App/backend/src/main/java/com/employees/api/service/EmployeeService.java

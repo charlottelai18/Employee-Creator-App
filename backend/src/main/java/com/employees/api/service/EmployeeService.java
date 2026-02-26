@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.employees.api.exception.DuplicateEmailException;
+import com.employees.api.exception.EmployeeNotFoundException;
 import com.employees.api.model.Employee;
 import com.employees.api.repository.EmployeeRepository;
 
@@ -22,16 +24,20 @@ public class EmployeeService {
     }
 
     public Optional<Employee> getEmployeeById(Long id) {
-        return employeeRepository.findById(id);
+        return Optional.of(employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
     public Employee createEmployee(Employee employee) {
+        if (employeeRepository.findByEmail(employee.getEmail()).isPresent()) {
+            throw new DuplicateEmailException(employee.getEmail());
+        }
         return employeeRepository.save(employee);
     }
 
     public Employee updateEmployee(Long id, Employee updatedEmployee) {
         Employee existing = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
 
         existing.setFirstName(updatedEmployee.getFirstName());
         existing.setLastName(updatedEmployee.getLastName());
