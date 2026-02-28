@@ -13,14 +13,14 @@ export const getEmployeeById = async (id: number): Promise<Employee> => {
     return response.data;
 }
 
-export const createEmployee = async (employee: Omit<Employee, 'id'>): Promise<Employee> => {
-    const response = await axios.post<Employee>(API_URL, employee);
-    return response.data;
+export const createEmployee = async (employee: any): Promise<Employee> => {
+    const response = await axios.post<Employee>(API_URL, employee)
+    return response.data
 }
 
-export const updateEmployee = async (id: number, employee: Partial<Employee>): Promise<Employee> => {
-    const response = await axios.put<Employee>(`${API_URL}/${id}`, employee);
-    return response.data;
+export const updateEmployee = async (id: number, employee: any): Promise<Employee> => {
+    const response = await axios.put<Employee>(`${API_URL}/${id}`, employee)
+    return response.data
 }
 
 export const deleteEmployee = async (id: number): Promise<void> => {
