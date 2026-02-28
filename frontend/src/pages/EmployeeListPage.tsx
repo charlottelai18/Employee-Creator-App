@@ -37,45 +37,6 @@ const EmployeeListPage = () => {
         }
     
     }
-
-    const getContractSummary = (employee: Employee): string => {
-        const start = new Date(employee.startDate)
-        const end = employee.endDate ? new Date(employee.endDate) : new Date()
-        const years = Math.floor((end.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
-        const type = employee.contractType === 'PERMANENT' ? 'Permanent' : 'Contract'
-        return `${type} - ${years}yrs`
-    }
-
-    return (
-    <div>
-        <h1>Employees List</h1>
-        <button onClick={() => navigate('/employees/new')}>
-            Add Employee
-        </button>
-
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-
-        {employees.map(employee => (
-            <div key={employee.id}>
-                <p>{employee.firstName} {employee.lastName}</p>
-                <p>{getContractSummary(employee)}</p>
-                <p>{employee.email}</p>
-
-                <button onClick={() => navigate(`/employees/${employee.id}/edit`)}>
-                    Edit
-                </button>
-                <button onClick={() => handleDelete(employee.id)}>
-                    Remove
-                </button>
-            </div>
-        ))}
-
-        {employees.length === 0 && !loading && (
-            <p>No employees found. Add one!</p>
-        )}
-    </div>
-)
 }
 
 export default EmployeeListPage
