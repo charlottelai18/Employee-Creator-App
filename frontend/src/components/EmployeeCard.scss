@@ -1,0 +1,69 @@
+.employee-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #eeeeee;
+    transition: background-color 0.15s;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #fafafa;
+    }
+
+    .employee-info {
+        .employee-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .employee-details {
+            font-size: 0.85rem;
+            color: #666666;
+            margin: 0.1rem 0;
+        }
+    }
+
+    .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .edit-btn {
+            background: none;
+            border: none;
+            color: #1e3a5f;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.5rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .divider {
+            color: #cccccc;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #cc0000;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.5rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { getAllEmployees, deleteEmployee } from '../api/employeeApi'
 import type { Employee } from '../types'
 import EmployeeCard from '../components/EmployeeCard'
+import './EmployeeListPage.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
+
 
 const EmployeeListPage = () => {
     const [employees, setEmployees] = useState<Employee[]>([])
@@ -17,7 +21,7 @@ const EmployeeListPage = () => {
                 const data = await getAllEmployees()
                 setEmployees(data)
             } catch (err) {
-                setError("Failed to fetch employees")
+                setError("")
             } finally {
                 setLoading(false)
             }
@@ -38,27 +42,47 @@ const EmployeeListPage = () => {
     }
 
     return (
-        <div>
-            <h1>Employees List</h1>
+        <div className="list-page">
+            <div className="title-header">
+                <div className="title-container">
+                    <div className="title-icon">
+                        <FontAwesomeIcon icon={faUserGroup} />
+                    </div>
+                    <div className="title-text">
+                        <h1>Employee Manager</h1>
+                        <p>Manage your team members</p>
+                    </div>
+                </div>
+            </div>
 
-            <button onClick={() => navigate('/employees/new')}>
-                Add Employee
-            </button>
+            <div className="list-header">
+                <div className="list-container">
+                    <h1>Employees List</h1>
+                </div>
+            </div>
 
-            {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            <div className="list-container">
+                {loading && <p>Loading...</p>}
+                {error && <p>{error}</p>}
 
-            {employees.map(employee => (
-                <EmployeeCard
-                    key={employee.id}
-                    employee={employee}
-                    onDelete={handleDelete}
-                />
-            ))}
+                {employees.map(employee => (
+                    <EmployeeCard
+                        key={employee.id}
+                        employee={employee}
+                        onDelete={handleDelete}
+                    />
+                ))}
 
-            {employees.length === 0 && !loading && (
-                <p>No employees found. Add one!</p>
-            )}
+                {employees.length === 0 && !loading && (
+                    <p>No employees found. Add one!</p>
+                )}
+
+                <div className="list-controls">
+                    <button className="add-button" onClick={() => navigate('/employees/new')}>
+                        Add Employee
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }

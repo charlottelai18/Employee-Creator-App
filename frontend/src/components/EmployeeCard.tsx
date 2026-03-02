@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { Employee } from '../types'
+import './EmployeeCard.scss';
 
 interface EmployeeCardProps {
     employee: Employee
@@ -18,17 +19,20 @@ const EmployeeCard = ({ employee, onDelete }: EmployeeCardProps) => {
     }
 
     return (
-        <div>
-            <p>{employee.firstName} {employee.lastName}</p>
-            <p>{getContractSummary(employee)}</p>
-            <p>{employee.email}</p>
-
-            <button onClick={() => navigate(`/employees/${employee.id}/edit`)}>
-                Edit
-            </button>
-            <button onClick={() => onDelete(employee.id)}>
-                Remove
-            </button>
+        <div className="employee-card">
+            <div className="employee-info">
+                <p className="employee-name">{employee.firstName} {employee.lastName}</p>
+                <p className="employee-details">{getContractSummary(employee)}</p>
+                <p className="employee-details">{employee.email}</p>
+            </div>
+            <div className="action-buttons">
+                <button className="edit-btn" onClick={() => navigate(`/employees/${employee.id}/edit`)}>
+                    Edit
+                </button>
+                <button className="remove-btn" onClick={() => onDelete(employee.id)}>
+                    Remove
+                </button>
+            </div>
         </div>
     )
 }
