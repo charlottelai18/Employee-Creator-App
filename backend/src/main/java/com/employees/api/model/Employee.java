@@ -40,7 +40,10 @@ public class Employee {
     private String address;
     private String contractType;
     private LocalDate startDate;
+
+    @Column(nullable = true)
     private LocalDate endDate;
+
     private String basis;
     private Integer hoursPerWeek;
 
