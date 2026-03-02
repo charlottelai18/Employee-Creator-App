@@ -1,13 +1,14 @@
 .list-page {
     min-height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #f0f2f5;
 
+    // title header at top
     .title-header {
-    background-color: #f5f5f5;
-    padding: 2rem 0;
+        background-color: #f0f2f5;
+        padding: 1.5rem 0;
 
         .title-container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 0 1.5rem;
             display: flex;
@@ -40,77 +41,95 @@
                     margin: 0;
                 }
             }
-        }   
-    }
-
-    .list-header {
-        padding: 2rem 0;
-        .list-container {
-            h1 {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #1a1a1a;
-                margin: 0;
-            }
         }
     }
 
-    .list-container {
-        max-width: 800px;
+    // main content area
+    .main-container {
+        max-width: 700px;
         margin: 0 auto;
-        padding: 0 1.5rem;
-    }
+        padding: 0 1.5rem 3rem 1.5rem;
 
-    .list-controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem 0 1rem 0;
-
-        p {
-            color: #666666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
+        // wide add button
         .add-button {
-            background-color: #1e3a5f;
+            width: 100%;
+            background-color: #3b6fdb;
             color: white;
             border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
             transition: background-color 0.2s;
 
             &:hover {
-                background-color: #152840;
+                background-color: #2d5bc4;
             }
         }
-    }
 
-    .employees-list {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-    }
+        // employees section
+        .employees-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 
-    .no-employees {
-        text-align: center;
-        padding: 3rem;
-        color: #666666;
-    }
+            .employees-section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
 
-    .loading {
-        text-align: center;
-        padding: 2rem;
-        color: #666666;
-    }
+                h2 {
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    color: #1a1a1a;
+                    margin: 0;
+                }
 
-    .error {
-        color: red;
-        text-align: center;
-        padding: 1rem;
+                .employee-count {
+                    background-color: #3b6fdb;
+                    color: white;
+                    border-radius: 50%;
+                    width: 28px;
+                    height: 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                }
+            }
+
+            .employees-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666666;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .no-employees {
+            text-align: center;
+            padding: 2rem;
+            color: #666666;
+        }
     }
 }

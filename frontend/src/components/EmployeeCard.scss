@@ -2,67 +2,91 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid #eeeeee;
-    transition: background-color 0.15s;
-
-    &:last-child {
-        border-bottom: none;
-    }
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    padding: 1.2rem;
+    transition: box-shadow 0.2s;
 
     &:hover {
-        background-color: #fafafa;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-    .employee-info {
-        .employee-name {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #1a1a1a;
-            margin: 0 0 0.2rem 0;
-        }
-
-        .employee-details {
-            font-size: 0.85rem;
-            color: #666666;
-            margin: 0.1rem 0;
-        }
-    }
-
-    .action-buttons {
+    .card-left {
         display: flex;
         align-items: center;
+        gap: 1rem;
+
+        .avatar {
+            background-color: #e8eeff;
+            color: #3b6fdb;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .employee-info {
+            .employee-name {
+                font-weight: 700;
+                font-size: 1rem;
+                color: #1a1a1a;
+                margin: 0 0 0.2rem 0;
+            }
+
+            .employee-details {
+                font-size: 0.85rem;
+                color: #666666;
+                margin: 0.1rem 0;
+            }
+        }
+    }
+
+    .card-actions {
+        display: flex;
         gap: 0.5rem;
 
         .edit-btn {
             background: none;
-            border: none;
-            color: #1e3a5f;
-            font-weight: 500;
+            border: 1px solid #dddddd;
+            color: #555555;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0.3rem 0.5rem;
+            transition: all 0.2s;
 
             &:hover {
-                text-decoration: underline;
+                background-color: #e8eeff;
+                border-color: #3b6fdb;
+                color: #3b6fdb;
             }
         }
 
-        .divider {
-            color: #cccccc;
-        }
-
-        .remove-btn {
+        .delete-btn {
             background: none;
-            border: none;
-            color: #cc0000;
-            font-weight: 500;
+            border: 1px solid #dddddd;
+            color: #555555;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0.3rem 0.5rem;
+            transition: all 0.2s;
 
             &:hover {
-                text-decoration: underline;
+                background-color: #ffeeee;
+                border-color: #cc0000;
+                color: #cc0000;
             }
         }
     }

@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { getAllEmployees, deleteEmployee } from '../api/employeeApi'
 import type { Employee } from '../types'
 import EmployeeCard from '../components/EmployeeCard'
-import './EmployeeListPage.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
-
+import './EmployeeListPage.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserGroup, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import toast from 'react-hot-toast'
 
 const EmployeeListPage = () => {
     const [employees, setEmployees] = useState<Employee[]>([])
@@ -34,8 +34,9 @@ const EmployeeListPage = () => {
             setLoading(true)
             await deleteEmployee(id)
             setEmployees(employees.filter(emp => emp.id !== id))
+            toast.success("Employee deleted successfully!")
         } catch (err) {
-            setError("Failed to delete employee")
+            toast.error("Failed to delete employee")
         } finally {
             setLoading(false)
         }
@@ -43,6 +44,8 @@ const EmployeeListPage = () => {
 
     return (
         <div className="list-page">
+
+            {/* title header */}
             <div className="title-header">
                 <div className="title-container">
                     <div className="title-icon">
@@ -55,32 +58,41 @@ const EmployeeListPage = () => {
                 </div>
             </div>
 
-            <div className="list-header">
-                <div className="list-container">
-                    <h1>Employees List</h1>
-                </div>
-            </div>
+            {/* main content */}
+            <div className="main-container">
 
-            <div className="list-container">
-                {loading && <p>Loading...</p>}
-                {error && <p>{error}</p>}
+                {/* add employee button */}
+                <button
+                    className="add-button"
+                    onClick={() => navigate('/employees/new')}
+                >
+                    <FontAwesomeIcon icon={faUserPlus} />
+                    Add New Employee
+                </button>
 
-                {employees.map(employee => (
-                    <EmployeeCard
-                        key={employee.id}
-                        employee={employee}
-                        onDelete={handleDelete}
-                    />
-                ))}
+                {/* employee list section */}
+                <div className="employees-section">
+                    <div className="employees-section-header">
+                        <h2>All Employees</h2>
+                        <span className="employee-count">{employees.length}</span>
+                    </div>
 
-                {employees.length === 0 && !loading && (
-                    <p>No employees found. Add one!</p>
-                )}
+                    {loading && <p className="loading">Loading...</p>}
+                    {error && <p className="error">{error}</p>}
 
-                <div className="list-controls">
-                    <button className="add-button" onClick={() => navigate('/employees/new')}>
-                        Add Employee
-                    </button>
+                    <div className="employees-list">
+                        {employees.map(employee => (
+                            <EmployeeCard
+                                key={employee.id}
+                                employee={employee}
+                                onDelete={handleDelete}
+                            />
+                        ))}
+
+                        {employees.length === 0 && !loading && (
+                            <p className="no-employees">No employees found. Add one!</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

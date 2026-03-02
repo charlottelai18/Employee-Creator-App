@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import type { Employee } from '../types'
 import './EmployeeCard.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil, faUser, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 interface EmployeeCardProps {
     employee: Employee
@@ -20,17 +22,33 @@ const EmployeeCard = ({ employee, onDelete }: EmployeeCardProps) => {
 
     return (
         <div className="employee-card">
-            <div className="employee-info">
-                <p className="employee-name">{employee.firstName} {employee.lastName}</p>
-                <p className="employee-details">{getContractSummary(employee)}</p>
-                <p className="employee-details">{employee.email}</p>
+            <div className="card-left">
+                <div className="avatar">
+                    <FontAwesomeIcon icon={faUser} />
+                </div>
+                <div className="employee-info">
+                    <p className="employee-name">
+                        {employee.firstName} {employee.lastName}
+                    </p>
+                    <p className="employee-details">
+                        {getContractSummary(employee)}
+                    </p>
+                    <p className="employee-details">{employee.email}</p>
+                </div>
             </div>
-            <div className="action-buttons">
-                <button className="edit-btn" onClick={() => navigate(`/employees/${employee.id}/edit`)}>
-                    Edit
+
+            <div className="card-actions">
+                <button
+                    className="edit-btn"
+                    onClick={() => navigate(`/employees/${employee.id}/edit`)}
+                >
+                    <FontAwesomeIcon icon={faPencil} />
                 </button>
-                <button className="remove-btn" onClick={() => onDelete(employee.id)}>
-                    Remove
+                <button
+                    className="delete-btn"
+                    onClick={() => onDelete(employee.id)}
+                >
+                    <FontAwesomeIcon icon={faTrash} />
                 </button>
             </div>
         </div>
