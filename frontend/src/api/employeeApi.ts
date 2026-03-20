@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Employee } from "../types";
 
-const API_URL = "http://localhost:8080/api/employees";
+const API_URL = "http://13.210.62.139:8080/api/employees";
 
 export const getAllEmployees = async (): Promise<Employee[]> => {
     const response = await axios.get<Employee[]>(API_URL);

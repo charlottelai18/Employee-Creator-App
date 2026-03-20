@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -37,8 +37,6 @@ const EmployeeFormPage = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const isEditMode = Boolean(id)
-
-    const [submitError, setSubmitError] = useState<string | null>(null)
 
     const {
         register,
@@ -206,7 +204,6 @@ const EmployeeFormPage = () => {
                     </div>
 
                     {/* buttons */}
-                    {submitError && <p className="error-message">{submitError}</p>}
                     <div className="form-actions">
                         <button
                             type="submit"
